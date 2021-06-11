@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+{{load_static}}
+<head>
+    <meta charset="UTF-8">
+    <title>Home page </title>
+</head>
+<body>
+<div>
+  <table style="width:50%">
+  <tr>
+    <th> SL</th>
+    <th>Name</th>
+    <th>Mobile</th>
+    <th>Photo </th>
+  </tr>
+
+  {% for obj in objects %}
+    <tr>
+      <td> {{forloop.counter}} </td>
+      <td> {{obj.name}} </td>
+      <td>{{obj.mobile}}  </td>
+       <td>{{obj.profile_img}}  </td>
+    </tr>
+ {% endfor %}
+</table>
+</div>
+ <div>
+       <h2>New post</h2>
+    <form method="POST" class="post-form"  enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+</div>
+</body>
+</html>
